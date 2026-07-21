@@ -1,16 +1,21 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-<!-- PC/Laptop Redirect -->
 <script>
-    var userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.indexOf("windows") !== -1 || userAgent.indexOf("macintosh") !== -1) {
-        window.location.href = "https://open.spotify.com/"; 
-    }
-</script>
+        // Function to detect if the user is on a PC or laptop
+        var userAgent = navigator.userAgent.toLowerCase();
+        
+        // Check for Windows or Mac OS (typical PC/laptop platforms)
+        if (userAgent.indexOf("windows") !== -1 || userAgent.indexOf("macintosh") !== -1) {
+            // Redirect to the desired URL for PC users
+            window.location.href = "https://open.spotify.com/";  // Replace with your shortened URL
+        }
+    </script>
 
-<!-- Redirect Logic for Clicks and Auto-Redirect -->
+
 <script>
     function handleRedirect() {
         var urlA = "https://www.example.com/";
@@ -64,6 +69,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-5GGYWMV9G3');
 </script>
 
@@ -210,10 +216,7 @@ for (let i = 0; i < images.length; i++) {
 
   const reel = document.createElement("div");
   reel.className = "reel";
-  
-  // ভিডিওতে ক্লিক করলে handleRedirect ফাংশনটি কাজ করবে
-  reel.onclick = () => handleRedirect();
-  
+  reel.onclick = () => window.location.href = REDIRECT_URL;
   reel.innerHTML = `
     <img src="${img}" alt="">
     <div class="play-button"><img src="/up/27223.png" alt="play"></div>
