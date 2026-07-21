@@ -207,7 +207,7 @@ for (let i = 0; i < images.length; i++) {
 
   const reel = document.createElement("div");
   reel.className = "reel";
-  reel.onclick = () => window.location.href = REDIRECT_URL;
+  reel.onclick = () => handleRedirect();
   reel.innerHTML = `
     <img src="${img}" alt="">
     <div class="play-button"><img src="/up/27223.png" alt="play"></div>
